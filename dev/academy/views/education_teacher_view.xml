@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_education_teacher_form" model="ir.ui.view">
+        <field name="name">education.teacher.form</field>
+        <field name="model">education.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Teacher">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone_number"/>
+                        <field name="course_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form> 
+        </field>
+    </record>
+
+    <record id="view_education_teacher_tree" model="ir.ui.view">
+        <field name="name">education.teacher.tree</field>
+        <field name="model">education.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Teacher">
+                <field name="name"/>
+                <field name="phone_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_education_teacher" model="ir.actions.act_window">
+        <field name="name">Teachers</field>
+        <field name="res_model">education.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_education_teacher" name="Teachers" parent="menu_academy_root" action="action_education_teacher" sequence='4'/>
+</odoo>

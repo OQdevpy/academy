@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field name="name">res.users.manager.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Employees">
+                <field name="name" />
+                <field name="role" />
+                <field name="address" />
+                <field name="phone_number" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="user_manager_form_custom" model="ir.ui.view">
+        <field name="name">res.users.manager.form.custom</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <button string="Add Password"
+                            type="object"
+                            name="action_change_password"
+                            class="btn-primary"  groups="academy.group_admin"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_avatar_group">
+                        <field name="image_1920" widget="image" class="oe_avatar" />
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="login" />
+                        </group>
+                        <group>
+                            <field name="role" />
+                            <field name="address" />
+                            <field name="phone_number" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_employee" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

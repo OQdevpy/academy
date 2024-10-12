@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_user_form_custom" model="ir.ui.view">
+        <field name="name">res.users.form.custom</field>
+        <field name="model">res.users</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_users_form"/> 
+        <field name="arch" type="xml">
+             <xpath expr="//notebook" position="inside">
+                 <page name="role_page" string="Role">
+                     <group>
+                             <field name="role"/>
+                             <field name="address"/>
+                             <field name="phone_number"/>
+                     </group>
+                 </page>
+             </xpath>
+        </field>
+     </record>
+</odoo>

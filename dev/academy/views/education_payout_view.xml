@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view for education.payout -->
+    <record id="view_education_payout_form" model="ir.ui.view">
+        <field name="name">education.payout.form</field>
+        <field name="model">education.payout</field>
+        <field name="arch" type="xml">
+            <form string="Payout">
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="amount"/>
+                        <field name="date"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for education.payout -->
+    <record id="view_education_payout_tree" model="ir.ui.view">
+        <field name="name">education.payout.tree</field>
+        <field name="model">education.payout</field>
+        <field name="arch" type="xml">
+            <tree string="Payout">
+                <field name="employee_id" string="Teacher"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Graph view for education.payout -->
+    <record id="view_education_payout_graph" model="ir.ui.view">
+        <field name="name">education.payout.graph</field>
+        <field name="model">education.payout</field>
+        <field name="arch" type="xml">
+            <graph string="Payouts" type="bar">
+                <field name="date" type="row"/> <!-- Grouping by date (x-axis) -->
+                <field name="amount" type="measure"/> <!-- Measure is the payout amount (y-axis) -->
+                <field name="employee_id" type="col" options="{'colors': {'1': 'blue', '2': 'green', '3': 'red'}}"/> <!-- Grouping by employee, colored by employee_id -->
+            </graph>
+        </field>
+    </record>
+
+    <!-- Action for education.payout with form, tree, and graph views -->
+    <record id="action_education_payout" model="ir.actions.act_window">
+        <field name="name">Payouts</field>
+        <field name="res_model">education.payout</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!-- Menu item for education.payout -->
+    <menuitem
+        id="menu_education_payout"
+        name="Payouts"
+        action="action_education_payout"
+        parent="menu_education_payment"
+        sequence="2"/>
+
+</odoo>

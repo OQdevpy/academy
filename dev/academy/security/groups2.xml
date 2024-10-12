@@ -1,0 +1,30 @@
+<odoo>
+
+
+    <data noupdate="0">
+        <record id="module_category_academy" model="ir.module.category">
+            <field name="name">Learning Center</field>
+            <field name="sequence">1</field>
+        </record>
+
+    <record id="group_academy_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="academy.module_category_academy"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment"> 
+            This group is used by academy admin
+        </field>
+    </record>
+
+    <record id="group_academy_administrator" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="academy.module_category_academy"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment"> 
+            This group is used by academy administrator
+        </field>
+    </record>
+
+
+    </data>
+</odoo>

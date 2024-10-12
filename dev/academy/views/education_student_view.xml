@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Form view for education.student model -->
+        <record id="view_education_student_form" model="ir.ui.view">
+            <field name="name">education.student.form</field>
+            <field name="model">education.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone_number"/>
+                        </group>
+                        <group string="Payments">
+                            <field name="payment_ids">
+                                <tree string="Payments">
+                                    <field name="student_id"/>
+                                    <field name="amount"/>
+                                    <field name="date"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for education.student model -->
+        <record id="view_education_student_tree" model="ir.ui.view">
+            <field name="name">education.student.tree</field>
+            <field name="model">education.student</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name"/>
+                    <field name="phone_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for education.student model -->
+        <record id="action_education_student" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="res_model">education.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu item for education.student model -->
+        <menuitem id="menu_education_student" name="Students" parent="menu_academy_root" action="action_education_student" sequence="3"/>
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="education_group_tree" model="ir.ui.view">
+        <field name="name">education.group.tree</field>
+        <field name="model">education.group</field>
+        <field name="arch" type="xml">
+            <tree string="Groups">
+                <field name="name"/>
+                <field name="teacher_id"/>
+                <field name="course_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="education_group_form" model="ir.ui.view">
+        <field name="name">education.group.form</field>
+        <field name="model">education.group</field>
+        <field name="arch" type="xml">
+            <form string="Group">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="teacher_id"/>
+                        <field name="course_id"/>
+                    </group>
+                    <group>
+                        <field name="student_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Payments">
+                        <field name="payment_ids">
+                            <tree string="Payments">
+                                <field name="student_id"/>
+                                <field name="amount"/>
+                                <field name="date"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                
+            </form>
+        </field>
+    </record>
+
+    <record id="action_education_group" model="ir.actions.act_window">
+        <field name="name">Groups</field>
+        <field name="res_model">education.group</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_education_group" name="Groups" parent="menu_academy_root" action="action_education_group" sequence="2"/>
+</odoo>
